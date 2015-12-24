@@ -1,9 +1,11 @@
 source 'https://rubygems.org'
 
+gem 'acts_as_commentable_with_threading'
 gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'twitter-bootstrap-rails'
 gem 'slim-rails'
+gem 'simple_form'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.2'

@@ -1,25 +1,43 @@
-h1 Listing posts
-
-table
-  thead
-    tr
-      th User
-      th Title
-      th Body
-      th
-      th
-      th
-
-  tbody
+nav#mainNav.navbar.navbar-default.navbar-fixed-top
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed data-target='#bs-example-navbar-collapse-1' data-toggle='collapse' type='button'
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand.page-scroll href='#page-top'  Blog App
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      ul.nav.navbar-nav.navbar-right
+        -if user_signed_in?
+          li
+            a.page-scroll href="/posts"  All posts
+          li
+            a.page-scroll href="/profile"  My posts
+          li
+            = link_to 'Create', new_post_path
+          li
+            = link_to 'Logout', destroy_user_session_path, :method => :delete
+        - else
+          li
+            a.page-scroll href="/users/sign_in" Sign in
+.row.margin70
+  .col-lg-8.col-lg-offset-2
+    h4 = t '.title', :default => 'Posts'
     - @posts.each do |post|
-      tr
-        td = post.user_id
-        td = post.title
-        td = post.body
-        td = link_to 'Show', post
-        td = link_to 'Edit', edit_post_path(post)
-        td = link_to 'Destroy', post, data: {:confirm => 'Are you sure?'}, :method => :delete
-
-br
-
-= link_to 'New Post', new_post_path
+      .panel.panel-default
+        .panel-heading
+          .text-center
+            .row
+              .col-lg-9
+                h4.pull-left = link_to post.title, post_path(post)
+              .col-lg-3
+                h4.pull-right
+                  = link_to t('.edit', :default => t('.helpers.links.edit')), edit_post_path(post), :class => 'btn btn-info btn-sm pull-right' if post.id == current_user.id
+        .panel-body
+          p = post.body
+        .panel-footer.clearfix
+          span
+            =' post.created_at.strftime('%d-%b-%y %H:%M')
+          span
+            =' link_to t('.destroy', :default => t('.helpers.links.destroy')), post_path(post), :method => :delete, :data => {:confirm => t('.confirm', :default => t('.helpers.links.confirm ', :default => 'Are you sure?'))}, :class => 'btn btn-danger pull-right btn-sm' if post.id == current_user.id
