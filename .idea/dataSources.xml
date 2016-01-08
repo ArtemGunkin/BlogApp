@@ -5,8 +5,10 @@
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:postgresql:blogapp_dev</jdbc-url>
-      <libraries />
+      <jdbc-url>jdbc:postgresql://127.0.0.1/postgres</jdbc-url>
+      <explain-plan-config>
+        <provider>com.intellij.database.plan.postgres.PostgresExplainPlanProvider</provider>
+      </explain-plan-config>
     </data-source>
   </component>
 </project>

@@ -1,26 +1,7 @@
 development:
   adapter: postgresql
   encoding: utf8
-  database: blogapp_dev
-  pool: 5
+  database: postgres
   username: postgres
-  password: 8loz9fnl
-
-test: &TEST
-  adapter: postgresql
-  encoding: utf8
-  database: project_test
-  pool: 5
-  username: postgres
-  password: 8loz9fnl
-
-production:
-  adapter: postgresql
-  encoding: utf8
-  database: project_production
-  pool: 5
-  username: postgres
-  password: 8loz9fnl
-
-cucumber:
-  <<: *TEST
+  password: 8loz9fno
+  host: localhost
