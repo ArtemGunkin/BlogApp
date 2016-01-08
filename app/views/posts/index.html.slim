@@ -33,11 +33,11 @@ nav#mainNav.navbar.navbar-default.navbar-fixed-top
                 h4.pull-left = link_to post.title, post_path(post)
               .col-lg-3
                 h4.pull-right
-                  = link_to t('.edit', :default => t('.helpers.links.edit')), edit_post_path(post), :class => 'btn btn-info btn-sm pull-right' if post.id == current_user.id
+                  = link_to t('.edit', :default => t('.helpers.links.edit')), edit_post_path(post), :class => 'btn btn-info btn-sm pull-right' if post.user_id == current_user.id
         .panel-body
           p = post.body
         .panel-footer.clearfix
           span
             =' post.created_at.strftime('%d-%b-%y %H:%M')
           span
-            =' link_to t('.destroy', :default => t('.helpers.links.destroy')), post_path(post), :method => :delete, :data => {:confirm => t('.confirm', :default => t('.helpers.links.confirm ', :default => 'Are you sure?'))}, :class => 'btn btn-danger pull-right btn-sm' if post.id == current_user.id
+            =' link_to t('.destroy', :default => t('.helpers.links.destroy')), post_path(post), :method => :delete, :data => {:confirm => t('.confirm', :default => t('.helpers.links.confirm ', :default => 'Are you sure?'))}, :class => 'btn btn-danger pull-right btn-sm' if post.user_id == current_user.id
