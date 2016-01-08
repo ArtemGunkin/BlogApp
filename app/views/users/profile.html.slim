@@ -1,26 +1,3 @@
-nav#mainNav.navbar.navbar-default.navbar-fixed-top
-  .container-fluid
-    .navbar-header
-      button.navbar-toggle.collapsed data-target='#bs-example-navbar-collapse-1' data-toggle='collapse' type='button'
-        span.sr-only Toggle navigation
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-      a.navbar-brand.page-scroll href='#page-top'  Blog App
-    #bs-example-navbar-collapse-1.collapse.navbar-collapse
-      ul.nav.navbar-nav.navbar-right
-        -if user_signed_in?
-          li
-            a.page-scroll href="/posts"  All posts
-          li
-            a.page-scroll href="/profile"  My posts
-          li
-            = link_to 'Create', new_post_path
-          li
-            = link_to 'Logout', destroy_user_session_path, :method => :delete
-        - else
-          li
-            a.page-scroll href="/users/sign_in" Sign in
 .row.margin70
   .col-lg-8.col-lg-offset-2
     h4 = t '.title', :default => 'My posts (' + current_user.email + ')'

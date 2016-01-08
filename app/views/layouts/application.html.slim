@@ -9,4 +9,27 @@ html
     link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" /
     link href="http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" rel="stylesheet" type="text/css" /
   body
+    nav#mainNav.navbar.navbar-default.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle.collapsed data-target='#bs-example-navbar-collapse-1' data-toggle='collapse' type='button'
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand.page-scroll href='/'  Blog App
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            - if user_signed_in?
+              li
+                a.page-scroll href="/posts"  All posts
+              li
+                a.page-scroll href="/profile"  My posts
+              li
+                = link_to 'Create', new_post_path
+              li
+                = link_to 'Logout', destroy_user_session_path, :method => :delete
+            - else
+              li
+                a.page-scroll href="/users/sign_in" Sign in
     = yield
